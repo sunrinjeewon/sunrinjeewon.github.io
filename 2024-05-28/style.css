@@ -1,0 +1,34 @@
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    width: 80px;
+    aspect-ratio: 2 / 1;
+
+    border-radius: 12px;
+    
+    font-size: 16px;
+
+    background-color: #000;
+    color: white;
+    border-color: white;
+
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+button:active {
+    background-color: #555;
+}
