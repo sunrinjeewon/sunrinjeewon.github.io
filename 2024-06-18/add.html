@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+	<style>
+		#myform {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-end;
+			width: 300px;
+			margin: 100px auto 0;
+
+
+			padding: 20px;
+
+			border: 1px solid #000;
+			border-radius: 10px;
+
+			color: white;
+			background: linear-gradient(45deg, #8f8787, #333);
+
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+			font-family: 'Arial', sans-serif;
+
+			transition: all 0.3s;
+
+		}
+
+		.sum-container {
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			margin-bottom: 20px;
+		}
+
+		.sum-container span {
+			font-size: 1.3em;
+			margin: 0 10px;
+		}
+
+		.input-list {
+			display: flex;
+			flex-direction: column;
+			margin-right: 10px;
+
+			padding: 10px;
+			border-bottom: 1px solid white;
+			border-right: 1px solid white;
+		}
+
+		input {
+			width: 100px;
+			height: 30px;
+			padding-left: 50px;
+			margin: 5px;
+			border-radius: 5px;
+			text-align: right;
+			border: none;
+			background: none;
+			color: white;
+			outline: none;
+			-webkit-appearance: none;
+			font-size: 1.2em;
+		}
+
+		.result-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 50px;
+			margin-bottom: 20px;
+			border: 1px solid white;
+			border-radius: 5px;
+			font-size: 1.5em;
+
+		}
+
+		button {
+			width: 100%;
+			height: 50px;
+			border: none;
+			border-radius: 5px;
+			background: linear-gradient(45deg, #8f8787, #333);
+			color: white;
+			font-size: 1.5em;
+			cursor: pointer;
+			transition: all 0.3s;
+
+		}
+	</style>
+</head>
+<body>
+	<form name="myform" id="myform">
+		<div class="sum-container">
+			<div class="input-list">
+				<div class="input-container">
+					<input type="number" name="x" id="x" value="0">
+				</div>
+				<div class="input-container">
+					<input type="number" name="y" id="y" value="0">
+				</div>
+			</div>
+			<span>+</span>
+		</div>
+
+		<div class="result-container">
+			<span id="result"></span>
+		</div>
+		<button type="submit" onclick="calc();">계산</button>
+	</form>
+	<script>
+		const form = document.getElementById('myform');
+
+		form.addEventListener('submit', function(e) {
+			e.preventDefault();
+		});
+
+		function calc() {
+			const x = document.getElementById('x').value;
+			const y = document.getElementById('y').value;
+			const result = document.getElementById('result');
+
+			result.innerHTML = parseInt(x) + parseInt(y);
+		}
+	</script>
+</body>
+</html>

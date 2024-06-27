@@ -8,12 +8,11 @@ let currentUser;
 function login() {
     // 함수로 정리 (지금은 로그인 한번만 하지만, 나중에 로그아웃 후 재 로그인해야하니까)
     currentUser = prompt("Username을 입력해 주세요!");
-    let isnew = true;
-    for (existing in users) {
-        // for in
-        if (existing === currentUser) isnew = false;
+    let isNew = true;
+    for (let existing in users) {
+        if (existing === currentUser) isNew = false;
     }
-    if (isnew) {
+    if (isNew) {
         alert(`${currentUser}님 처음 오신 것을 환영합니다.`);
         users[currentUser] = [parseInt(prompt("비밀번호를 등록해 주세요!"))]; // 비밀번호 추가
     } else {
@@ -50,5 +49,5 @@ while (true) {
         showList();
     } else if (command === "cap") {
         printCaps();
-    } else if (command === "Q" || command == "q") break;
+    } else if (command === "Q" || command === "q") break;
 }

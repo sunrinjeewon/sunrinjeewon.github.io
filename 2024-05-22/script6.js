@@ -19,7 +19,7 @@ const toDoList = {
             ]; // 비밀번호 추가
         } else {
             alert(`${____.currentUser}님 다시 접속 하신 것을 환영합니다.`);
-            const checkPassword = () => {
+            const checkPassword = () __ {
                 //비밀번호 확인 함수
                 let password = parseInt(prompt("Password를 입력해 주세요!"));
                 if (password !== ____.users[____.currentUser][0]) {

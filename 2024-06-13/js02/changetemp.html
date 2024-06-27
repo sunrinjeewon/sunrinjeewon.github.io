@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>온도 변환기</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			gap: 20px;
+		}
+
+		.input-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 10px;
+
+			animation: tableIn 1s ease-out;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background: linear-gradient(135deg, #f06, #48f);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			color: #fff;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 300px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+			animation: tableIn 1s ease-out;
+		}
+
+		th, td {
+			padding: 15px;
+			text-align: center;
+		}
+
+		th {
+			background: rgba(0, 0, 0, 0.2);
+			font-size: 20px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		td {
+			background: rgba(255, 255, 255, 0.2);
+			font-size: 18px;
+			transition: background 0.3s, color 0.3s;
+		}
+
+		td:hover {
+			background: rgba(255, 255, 255, 0.3);
+			color: #000;
+		}
+
+		tr:nth-child(even) td {
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		@keyframes tableIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		#celsius {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			background: #fff;
+			font-size: 16px;
+			width: 200px;
+		}
+
+		#convert {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			background: #fff;
+			color: #333;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background 0.3s, color 0.3s;
+		}
+
+		#convert:hover {
+			background: #333;
+			color: #fff;
+		}
+
+		#result {
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<table>
+			<thead>
+			<tr>
+				<th>섭씨</th>
+				<th>화씨</th>
+			</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+
+		<div class="input-container">
+			<input type="number" id="celsius" placeholder="섭씨 온도를 입력하세요">
+			<button id="convert">변환</button>
+			<p id="result"></p>
+		</div>
+	</div>
+
+	<script>
+		const tableBody = document.querySelector('tbody');
+
+		for (let i = 0; i <= 10; i += 1) {
+			const celsius = i;
+			const fahrenheit = (celsius * 1.8 + 32).toFixed(1);
+			tableBody.innerHTML += `
+                <tr>
+                    <td>${ celsius }</td>
+                    <td>${ fahrenheit }</td>
+                </tr>
+            `;
+		}
+
+		const celsiusInput = document.getElementById('celsius');
+		const convertButton = document.getElementById('convert');
+		const result = document.getElementById('result');
+
+		convertButton.addEventListener('click', () => {
+			const celsius = celsiusInput.value;
+			const fahrenheit = (celsius * 1.8 + 32).toFixed(1);
+			result.innerHTML = `${ celsius }°C는 ${ fahrenheit }°F입니다.`;
+		});
+	</script>
+</body>
+</html>

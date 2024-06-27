@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.container {
+    width: 60%;
+    aspect-ratio: 1 / 1;
+
+    border: 3px solid black;
+    border-radius: 16px;
+
+    background: linear-gradient(45deg, #ccc, #ddd);
+}
+
+.input-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+
+    border-top: 3px solid #333;
+    padding-top: 2px;
+}
+
+.input-form > button {
+    aspect-ratio: 1 / 1;
+
+    border: 3px solid #ccc;
+    border-radius: 16px;
+
+    background: #fff;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background 0.3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+
+    outline: none;
+}
+
+.input-form > button:hover {
+    background: #eee;
+}
+
+.input-form > button:active {
+    background: #ddd;
+}
+
+#submit {
+    background: #f5c11d;
+    border: 3px solid #ffffff;
+}
+
+#reset {
+    background: #c22121;
+    border: 3px solid #ffffff;
+}
+
+#submit:hover {
+    background: #f5b11d;
+}
+
+#submit:active {
+    background: #f5a11d;
+}
+
+#reset:hover {
+    background: #b22121;
+}
+
+#reset:active {
+    background: #a22121;
+}
+
+.input {
+    width: 100%;
+    height: 80px;
+
+    padding: 0 10px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox  */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.result {
+    width: fit-content;
+    height: 80px;
+
+    padding: 0 40px;
+
+    border: 3px solid #333;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    font-weight: bold;
+}

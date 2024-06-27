@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Interactive Headings</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #ff7e5f, #feb47b);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.container {
+			margin: 10px;
+			padding: 20px;
+			border: 2px solid #fff;
+			border-radius: 10px;
+			text-align: center;
+			background: rgba(255, 255, 255, 0.2);
+			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+			transition: transform 0.3s, background 0.3s, border-color 0.3s;
+		}
+
+		.container:hover {
+			transform: scale(1.1);
+			background: rgba(255, 255, 255, 0.4);
+			border-color: #ff7e5f;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			margin: 0;
+			padding: 0;
+			color: #fff;
+			transition: color 0.3s, font-size 0.3s;
+			cursor: pointer;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<script>
+		for (let i = 1; i <= 6; i++) {
+			const container = document.createElement('div');
+			container.className = 'container';
+			container.innerHTML = `<h${ i }>Heading ${ i }</h${ i }>`;
+			container.addEventListener('click', () => {
+				alert(`You clicked on Heading ${ i }`);
+			});
+			document.body.appendChild(container);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fun Calculator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background: linear-gradient(135deg, #00c6ff, #0072ff);
+			margin: 0;
+		}
+
+		form {
+			background: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			width: 350px;
+			text-align: center;
+			animation: scaleUp 0.5s ease-out;
+			position: relative;
+		}
+
+		.num-container {
+			margin-bottom: 20px;
+			position: relative;
+			animation: fadeInUp 1s ease-out;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+			animation: fadeIn 0.5s ease-in-out;
+		}
+
+		input[type="number"] {
+			width: calc(100% - 44px);
+			padding: 10px 15px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			transition: border-color 0.3s, box-shadow 0.3s;
+			font-size: 16px;
+			background: #f9f9f9;
+		}
+
+		input[type="number"]:focus {
+			border-color: #007BFF;
+			box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+			background: #fff;
+		}
+
+		h4 {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			font-size: 24px;
+			color: #333;
+			animation: bounceIn 1s ease-out;
+		}
+
+		.result-highlight {
+			animation: highlightResult 0.5s ease-out;
+		}
+
+		button {
+			padding: 10px 20px;
+			background: #007BFF;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.3s;
+			font-size: 16px;
+		}
+
+		button:hover {
+			background-color: #0056b3;
+		}
+
+		button:active {
+			transform: scale(0.95);
+		}
+
+		.preview {
+			margin-top: 10px;
+			font-size: 14px;
+			color: #555;
+			animation: fadeInDown 0.5s ease-in-out;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes fadeInDown {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes bounceIn {
+			0% {
+				opacity: 0;
+				transform: scale(0.3);
+			}
+			50% {
+				opacity: 0.5;
+				transform: scale(1.1);
+			}
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		@keyframes scaleUp {
+			from {
+				transform: scale(0.8);
+			}
+			to {
+				transform: scale(1);
+			}
+		}
+
+		@keyframes highlightResult {
+			from {
+				transform: scale(1);
+				color: #333;
+			}
+			to {
+				transform: scale(1.2);
+				color: #007BFF;
+			}
+		}
+	</style>
+</head>
+<body>
+	<form id="myform" name="myform">
+		<div class="num-container">
+			<label for="num1">첫 번째 숫자: </label>
+			<input type="number" id="num1" name="num1" required>
+		</div>
+		<div class="num-container">
+			<label for="num2">두 번째 숫자: </label>
+			<input type="number" id="num2" name="num2" required>
+		</div>
+		<div class="preview" id="preview">미리 보기: 0</div>
+		<h4 id="sum">합계: 0</h4>
+		<button type="submit">계산</button>
+		<audio id="ding" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+	</form>
+
+	<script>
+		const num1 = document.getElementById('num1');
+		const num2 = document.getElementById('num2');
+		const sum = document.getElementById('sum');
+		const preview = document.getElementById('preview');
+		const myForm = document.getElementById('myform');
+		const ding = document.getElementById('ding');
+
+		function calc() {
+			const n1 = parseInt(num1.value) || 0;
+			const n2 = parseInt(num2.value) || 0;
+			const result = n1 + n2;
+			sum.textContent = '합계: ' + result;
+			sum.classList.add('result-highlight');
+			setTimeout(() => {
+				sum.classList.remove('result-highlight');
+			}, 500);
+			ding.play();
+		}
+
+		function updatePreview() {
+			const n1 = parseInt(num1.value) || 0;
+			const n2 = parseInt(num2.value) || 0;
+			preview.textContent = '미리 보기: ' + (n1 + n2);
+		}
+
+		myForm.addEventListener('submit', function (e) {
+			e.preventDefault();
+			calc();
+		});
+
+		num1.addEventListener('input', updatePreview);
+		num2.addEventListener('input', updatePreview);
+	</script>
+</body>
+</html>

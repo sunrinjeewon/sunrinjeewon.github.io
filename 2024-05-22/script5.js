@@ -33,7 +33,7 @@ function login() {
 function showList() {
     let i = 0;
     console.log("**************");
-    users[currentUser].forEach((user) => {
+    users[currentUser]._______((user) => {
         if (i !== 0) console.log(`#${i}. ${user}`);
         i++;
     });
@@ -42,13 +42,13 @@ function showList() {
 
 function addList() {
     let newTask = prompt("할 일을 추가해 주세요!");
-    users[currentUser].push(newTask);
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    users[currentUser].____(newTask);
+}
 
 function deleteList() {
     showList();
     let index = parseInt(prompt("몇 번째 일을 삭제할까요?"));
-    users[currentUser].splice(index, 1);
+    users[currentUser].______(index, 1);
 }
 
 function printCaps() {
@@ -73,4 +73,3 @@ while (true) {
         printCaps();
     } else if (command === "Q" || command == "q") break;
 }
-                                      

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>구구단</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background: linear-gradient(135deg, #6a11cb, #2575fc);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			color: #fff;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 2.5em;
+			animation: fadeIn 2s ease-in-out;
+			color: #fff;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		table {
+			border-collapse: collapse;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+			animation: slideIn 1s ease-out;
+		}
+
+		td {
+			padding: 15px;
+			text-align: center;
+			font-size: 1.2em;
+			color: #fff;
+			transition: background-color 0.3s, transform 0.3s;
+			background: rgba(0, 0, 0, 0.2);
+			position: relative;
+		}
+
+		tr:nth-child(even) td {
+			background: rgba(0, 0, 0, 0.3);
+		}
+
+		td:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+			transform: scale(1.1);
+			cursor: pointer;
+		}
+
+		.tooltip {
+			display: none;
+			position: absolute;
+			top: 70%;
+			left: 10%;
+			padding: 5px;
+			background: rgba(0, 0, 0, 0.7);
+			color: #fff;
+			border-radius: 5px;
+			white-space: nowrap;
+			font-size: 0.8em;
+			z-index: 999;
+		}
+
+
+		td:hover .tooltip {
+			display: block;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateY(-20px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>구구단표</h1>
+		<table></table>
+	</div>
+
+	<script>
+		const table = document.querySelector('table');
+
+		for (let i = 1; i <= 9; i++) {
+			const tr = document.createElement('tr');
+			for (let j = 1; j <= 9; j++) {
+				const td = document.createElement('td');
+				const result = i * j;
+				td.textContent = result.toString();
+
+				// 툴팁 요소 생성
+				const tooltip = document.createElement('div');
+				tooltip.className = 'tooltip';
+				tooltip.textContent = `${ i } x ${ j } = ${ result }`;
+				td.appendChild(tooltip);
+
+				tr.appendChild(td);
+			}
+			table.appendChild(tr);
+		}
+	</script>
+</body>
+</html>
