@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="box" style="background-color:#faea11; width:200px; height:50px;">
+        마우스를 올려주세요!
+    </div>
+    <script>
+        const box = document.getElementById('box')
+
+        function mouseOver(obj) {
+            box.innerText = '감사합니다'
+        }
+        function mouseOut(obj) {
+            box.innerText = '마우스를 올려주세요!'
+        }
+
+        box.addEventListener('mouseover', mouseOver)
+        box.addEventListener('mouseout', mouseOut)
+    </script>
+</body>
+</html>
