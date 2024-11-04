@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'purple';
+        ctx.fillRect(0, 0, 50, 50);
+
+        ctx.translate(20, 20);
+        ctx.scale(0.3, 0.3);
+        ctx.fillStyle = 'green';
+        ctx.fillRect(0, 0, 50, 50);
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="300"></canvas>
+    <script>
+        const ctx = document.getElementById('myCanvas').getContext('2d');
+
+        const gradient = ctx.createRadialGradient(150, 100, 30, 80, 60, 120);
+
+        gradient.addColorStop(0, 'white');
+        gradient.addColorStop(1, 'blue');
+        ctx.fillStyle = gradient;
+
+        ctx.fillRect(10, 10, 300, 200);
+    </script>
+</body>
+</html>

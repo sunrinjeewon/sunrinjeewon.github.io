@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const image = new Image();
+        image.src = 'pattern.jpeg';
+        image.width = 50;
+        image.height = 50;
+
+        image.onload = () => {
+            const pattern = ctx.createPattern(image, 'repeat');
+
+            ctx.rect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = pattern;
+            ctx.fill();
+        }
+    </script>
+</body>
+</html>

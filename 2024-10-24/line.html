@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="300"></canvas>
+    <script>
+        const ctx = document.getElementById('myCanvas').getContext('2d');
+
+        for (let i = 0; i < 20; i++) {
+            ctx.lineWidth = i + 3;
+            ctx.beginPath();
+            ctx.moveTo(10 + i * 30, 10);
+            ctx.lineTo(10 + i * 30, 200);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

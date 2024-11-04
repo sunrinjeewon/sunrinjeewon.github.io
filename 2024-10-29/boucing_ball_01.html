@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bouncing Ball Example</title>
+  <style>
+    canvas {
+      background: yellow;
+      border: 1px dotted black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+  <script>
+    let context;
+    const BASE_SPEED = 100;
+    const MAX_SPEED = 800;
+    let directionX = 1; 
+    let directionY = 1;
+    const canvas = document.getElementById('myCanvas')
+    const circleRadius = 20;
+    const rectangleSize = 300;
+    canvas.width = rectangleSize;
+    canvas.height = rectangleSize;
+    let x = rectangleSize / 1.5;
+    let y = rectangleSize / 2;
+    let lastTime = 0;
+    let totalTime = 0;
+
+    function easeInOut(t) {
+      return BASE_SPEED + (Math.pow(Math.sin(t * Math.PI), 5) * MAX_SPEED);
+    }
+
+    function draw(currentTime) {
+      if (!lastTime) {
+        lastTime = currentTime;
+      }
+      const deltaTime = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+      totalTime += deltaTime;
+
+      let context = canvas.getContext('2d');
+      context.clearRect(0, 0, rectangleSize, rectangleSize);
+      
+      context.beginPath();
+      context.arc(x, y, 20, 0, Math.PI * 2, true);
+      context.closePath();
+      context.fill();
+
+      const currentSpeed = easeInOut(totalTime);
+      const nextX = x + currentSpeed * directionX * deltaTime;
+      const nextY = y + currentSpeed * directionY * deltaTime;
+
+      if (nextX < circleRadius) {
+        x = circleRadius;
+        directionX = 1;
+        totalTime = 0;
+      } else if (nextX > rectangleSize - circleRadius) {
+        x = rectangleSize - circleRadius;
+        directionX = -1;
+        totalTime = 0;
+      } else {
+        x = nextX;
+      }
+
+      if (nextY < circleRadius) {
+        y = circleRadius;
+        directionY = 1;
+        totalTime = 0;
+      } else if (nextY > rectangleSize - circleRadius) {
+        y = rectangleSize - circleRadius;
+        directionY = -1;
+        totalTime = 0;
+      } else {
+        y = nextY;
+      }
+
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>
